@@ -32,7 +32,7 @@ const thoughtSchema = new Schema(
   }
 );
 
-userSchema
+thoughtSchema
   .virtual("reactionCount")
   // Getter
   .get(function () {
