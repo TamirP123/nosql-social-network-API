@@ -3,8 +3,8 @@ const {
   getThoughts,
   getSingleThought,
   createThought,
-  updateApplication,
-  deleteApplication,
+  updateThought,
+  deleteThought,
   addTag,
   removeTag,
 } = require('../../controllers/thoughtsController');
@@ -14,10 +14,10 @@ router.route('/').get(getThoughts).post(createThought);
 
 // /api/applications/:applicationId
 router
-  .route('/:applicationId')
+  .route('/:thoughtId')
   .get(getSingleThought)
-  .put(updateApplication)
-  .delete(deleteApplication);
+  .put(updateThought)
+  .delete(deleteThought);
 
 // /api/applications/:applicationId/tags
 router.route('/:applicationId/tags').post(addTag);

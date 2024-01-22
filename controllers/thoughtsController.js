@@ -49,19 +49,19 @@ module.exports = {
     }
   },
   // Updates and application using the findOneAndUpdate method. Uses the ID, and the $set operator in mongodb to inject the request body. Enforces validation.
-  async updateApplication(req, res) {
+  async updateThought(req, res) {
     try {
-      const application = await Application.findOneAndUpdate(
-        { _id: req.params.applicationId },
+      const thought = await Thought.findOneAndUpdate(
+        { _id: req.params.thoughtId },
         { $set: req.body },
         { runValidators: true, new: true }
       );
 
-      if (!application) {
+      if (!thought) {
         return res.status(404).json({ message: 'No application with this id!' });
       }
 
-      res.json(application);
+      res.json(thought);
     } catch (err) {
       console.log(err);
       res.status(500).json(err);
@@ -69,27 +69,27 @@ module.exports = {
   },
   // Deletes an application from the database. Looks for an app by ID.
   // Then if the app exists, we look for any users associated with the app based on he app ID and update the applications array for the User.
-  async deleteApplication(req, res) {
+  async deleteThought(req, res) {
     try {
-      const application = await Application.findOneAndRemove({ _id: req.params.applicationId });
+      const thought = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
 
-      if (!application) {
+      if (!thought) {
         return res.status(404).json({ message: 'No application with this id!' });
       }
 
       const user = await User.findOneAndUpdate(
-        { applications: req.params.applicationId },
-        { $pull: { applications: req.params.applicationId } },
+        { thoughts: req.params.thoughtId },
+        { $pull: { thoughts: req.params.thoughtId } },
         { new: true }
       );
 
       if (!user) {
         return res.status(404).json({
-          message: 'Application created but no user with this id!',
+          message: 'Thought attempted to delete but no user with this id!',
         });
       }
 
-      res.json({ message: 'Application successfully deleted!' });
+      res.json({ message: 'Thought successfully deleted!' });
     } catch (err) {
       res.status(500).json(err);
     }
