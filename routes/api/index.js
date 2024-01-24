@@ -9,6 +9,5 @@ module.exports = router;
 
 // Removing thoughts
 // Creating and removing reactions
-// Formatting date
 // Min max of body
 

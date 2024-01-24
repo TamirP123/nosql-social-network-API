@@ -109,15 +109,15 @@ module.exports = {
 
       res.json(thought);
     } catch (err) {
-      res.status(500).json(err);
+      res.status(500).json(err.message);
     }
   },
   // Remove application tag. This method finds the application based on ID. It then updates the tags array associated with the app in question by removing it's tagId from the tags array.
   async removeReaction(req, res) {
     try {
-      const thought= await Thought.findOneAndUpdate(
+      const thought = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { $pull: { thoughts: { thoughtId: req.params.thoughtId } } },
+        { $pull: { reactions: { reactionId: req.params.reactionId } } },
         { runValidators: true, new: true }
       );
 
