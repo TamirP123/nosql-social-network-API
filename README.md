@@ -16,7 +16,7 @@ THEN I am able to successfully create and delete reactions to thoughts and add a
 
 ### Live website and repo
 
-https://github.com/TamirP123/sql-employee-tracker
+https://github.com/TamirP123/nosql-social-network-API
 
 #### Photo of application
 
@@ -24,4 +24,4 @@ https://github.com/TamirP123/sql-employee-tracker
 
 #### Video Walthrough
 
-https://drive.google.com/file/d/1wwYN9KoLPLwdldsh_Kthkvl-Y5IW1UF4/view
+https://drive.google.com/file/d/1u20nPcV_jQr3phHIS30TAM4_V4aV--XF/view
